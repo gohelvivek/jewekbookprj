@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".register">
+
+    <TextView
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:text="Create your Company"
+        android:textSize="20dp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/nm"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20sp"
+        android:hint="Name"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/cnm"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="Company Name"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/no"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="Mobile no.(User Name)"
+        android:textColor="@color/black" />
+
+    <TextView
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Login id will be Mobile"
+        android:textColor="@color/blue" />
+
+    <EditText
+        android:id="@+id/pwd"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="Passwprd" />
+
+    <EditText
+        android:id="@+id/cpwd"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="Confirm Password"
+        android:textStyle="bold" />
+
+    <CheckBox
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="WhatsApp as Same as Mobile" />
+
+    <EditText
+        android:id="@+id/wno"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="WhatsApp No."
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/email"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="Email"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/wb"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:hint="Website"
+        android:textColor="@color/black" />
+
+    <EditText
+        android:id="@+id/address"
+        android:layout_width="300sp"
+        android:layout_height="70dp"
+        android:layout_gravity="center"
+        android:hint="Address"
+        android:textColor="@color/black" />
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <CheckBox
+            android:id="@+id/chec"
+            android:layout_width="100dp"
+            android:layout_marginLeft="50dp"
+            android:layout_height="wrap_content"
+            android:text="I accept" />
+
+        <TextView
+            android:id="@+id/tc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Terms and Conditions" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/colse"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="100sp"
+            android:backgroundTint="@color/gray"
+            android:text="Close" />
+
+
+        <Button
+            android:id="@+id/crec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:backgroundTint="@color/reddark"
+            android:text="Create Company" />
+    </LinearLayout>
+</LinearLayout>
