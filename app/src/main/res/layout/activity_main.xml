@@ -4,12 +4,148 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:layout_gravity="center"
+    android:orientation="vertical"
+    android:padding="20sp"
     android:scrollbars="vertical"
     tools:context=".MainActivity">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:background="@drawable/spaceee">
+
     <ImageView
+        android:id="@+id/img_1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20sp"
+        android:src="@drawable/logoo" />
+
+    <TextView
+        android:id="@+id/txt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="5sp"
+        android:text="Sign in to your Company"
+        android:textColor="@color/black"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/nmtil"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/nmet"
+            android:layout_width="300sp"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:drawableLeft="@drawable/nm"
+            android:hint="Mobile No.(Username)"
+            android:inputType="text"
+            android:cursorVisible="false"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="12dp"
+            android:textColor="@color/black"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/passwordTil"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="65dp"
+        app:counterEnabled="true"
+        app:counterMaxLength="15"
+        app:passwordToggleEnabled="true">
+
+        <EditText
+            android:id="@+id/passwordEt"
+            android:layout_width="300sp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:cursorVisible="false"
+            android:gravity="center"
+            android:hint="Password"
+            android:inputType="textPassword"
+            android:maxLength="15" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <CheckBox
+        android:id="@+id/re_1"
+        android:layout_width="300dp"
+        android:layout_marginBottom="10sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Remeber Me" />
+
+    <Button
+        android:id="@+id/lgn_1"
+        android:layout_width="300sp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/br"
+        android:gravity="center"
+        android:text="Login" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="375dp"
+        android:layout_height="300sp"
+        android:layout_marginTop="20sp"
+        android:background="@color/br"
+        android:layout_gravity="center"
+        android:outlineAmbientShadowColor="@color/black"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sign up"
+            android:textColor="@color/white"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_marginTop="10sp"
+            android:layout_gravity="center" />
+
+        <ImageView
+            android:id="@+id/imgview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:outlineAmbientShadowColor="@color/white"
+            android:src="@drawable/useric"
+            app:tint="#E4FFFFFF" />
+
+        <Button
+            android:id="@+id/btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Register Now!"
+            android:backgroundTint="@color/bro"
+            android:layout_gravity="center"
+            android:layout_marginTop="10sp"/>
+
+        <Button
+            android:id="@+id/butn"
+            android:layout_width="250sp"
+            android:layout_height="wrap_content"
+            android:text="Forgot Your Password?"
+            android:backgroundTint="@color/br"
+            android:layout_gravity="center"
+            android:layout_marginTop="10sp"/>
+    </LinearLayout>
 
 </LinearLayout>

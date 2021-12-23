@@ -3,7 +3,9 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/kotlinprg/Jewelbook/app/src/main/res/layout/activity_main.xml" value="0.196875" />
+        <entry key="..\:/kotlinprg/Jewelbook/app/src/main/res/drawable/spaceee.xml" value="0.21302083333333333" />
+        <entry key="..\:/kotlinprg/Jewelbook/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/kotlinprg/Jewelbook/app/src/main/res/layout/space.xml" value="0.196875" />
       </map>
     </option>
   </component>
