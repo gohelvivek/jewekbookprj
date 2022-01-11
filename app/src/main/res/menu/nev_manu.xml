@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="naviganiton_view">
+
+    <item
+        android:id="@+id/master"
+        android:title="Master">
+
+        <menu>
+            <item
+                android:id="@+id/acc"
+                android:title="Accounts"/>
+
+            <item
+                android:id="@+id/coim"
+                android:title="Contacts Import"/>
+
+            <item
+                android:id="@+id/opst"
+                android:title="Opening Stock"/>
+        </menu>
+
+    </item>
+
+    <item
+        android:id="@+id/sell"
+        android:title="Sell/Purchase"/>
+
+    <item
+        android:id="@+id/caseb"
+        android:title="Casebook"/>
+
+    <item
+        android:id="@+id/repo"
+        android:title="Reports">
+
+        <menu>
+            <item
+                android:id="@+id/otst"
+                android:title="Outstanding"/>
+
+            <item
+                android:id="@+id/led"
+                android:title="Ledger"/>
+
+            <item
+                android:id="@+id/bash"
+                android:title="Balance Sheet"/>
+
+            <item
+                android:id="@+id/stst"
+                android:title="Stock Status"/>
+
+            <item
+                android:id="@+id/gobu"
+                android:title="Gold Bullion"/>
+
+            <item
+                android:id="@+id/sibu"
+                android:title="SIlver Bullion"/>
+        </menu>
+
+    </item>
+
+    <item
+        android:id="@+id/setti"
+        android:title="Settings"/>
+
+    <item
+        android:id="@+id/supp"
+        android:title="Support"/>
+
+    <item
+        android:id="@+id/profi"
+        android:title="Profile"/>
+
+    <item
+        android:id="@+id/logouttt"
+        android:title="Log Out"/>
+
+
+
+</menu>

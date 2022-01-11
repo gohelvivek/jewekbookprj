@@ -7,12 +7,26 @@ import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
+
 class MainActivity : AppCompatActivity() {
+    lateinit var session: sessionmanager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getSupportActionBar()?.hide()
         setContentView(R.layout.activity_main)
+
+
+
+        session = sessionmanager(applicationContext)
+        if (session.isLoggedIn()) {
+            var i: Intent = Intent(applicationContext, home::class.java)
+            i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+            i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            startActivity(i)
+            finish()
+        }
+
 
         val usermo = findViewById<EditText>(R.id.nmet)
         val puw = findViewById<EditText>(R.id.passwordEt)
@@ -29,25 +43,38 @@ class MainActivity : AppCompatActivity() {
 
             val db = DBHelper(this, null)
 
+
             if (db.getUser(username, pass)) {
 
-                startActivity(Intent(this@MainActivity, home::class.java))
+
+                session.createLoginSession("lnm", "cname")
+                var i: Intent = Intent(applicationContext, home::class.java)
+                startActivity(i)
+                finish()
 
 
             } else {
-                Toast.makeText(applicationContext, "Wrong username/password", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Wrong username/password", Toast.LENGTH_SHORT)
+                    .show()
             }
         }
 
+        val apilogin = findViewById<Button>(R.id.apilg)
 
-            val clbtn = findViewById<Button>(R.id.btn)
-            clbtn.setOnClickListener() {
-                startActivity(Intent(this@MainActivity, register::class.java))
-            }
+        //api login
+        apilogin.setOnClickListener {
 
-            val clpass = findViewById<Button>(R.id.butn)
-            clpass.setOnClickListener() {
-                startActivity(Intent(this@MainActivity, forgotpassword::class.java))
-            }
+        }
+
+
+        val clbtn = findViewById<Button>(R.id.btn)
+        clbtn.setOnClickListener() {
+            startActivity(Intent(this@MainActivity, register::class.java))
+        }
+
+        val clpass = findViewById<Button>(R.id.butn)
+        clpass.setOnClickListener() {
+            startActivity(Intent(this@MainActivity, forgotpassword::class.java))
         }
     }
+}

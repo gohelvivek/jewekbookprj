@@ -10,6 +10,9 @@ import android.database.sqlite.SQLiteOpenHelper
 class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     SQLiteOpenHelper(context, DATABASE_NAME, factory, DATABASE_VERSION) {
 
+    var logname = ""
+    var logcname = ""
+
     override fun onCreate(db: SQLiteDatabase) {
 
         val query = ("CREATE TABLE " + TABLE_NAME + " ("
@@ -32,6 +35,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     }
 
 
+    //Insert Data in database
     fun addName(
         name: String,
         ccname: String,
@@ -63,10 +67,12 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     }
 
 
+    //Check username and password
     fun getUser(mbo: String, pas: String): Boolean {
 
-        var selectQuery = "select * from  " + TABLE_NAME.toString() + " where " + MNO_COL.toString() + " = " + "'" + mbo + "'" + " and " + PWD_COL.toString() + " = " + "'" + pas + "'"
-       // var qurys = "SELECT * FROM logggin"
+        var selectQuery =
+            "select * from  " + TABLE_NAME.toString() + " where " + MNO_COL.toString() + " = " + "'" + mbo + "'" + " and " + PWD_COL.toString() + " = " + "'" + pas + "'"
+        // var qurys = "SELECT * FROM logggin"
         val db = this.readableDatabase
         val cursor = db.rawQuery(selectQuery, null)
         cursor.moveToFirst()
@@ -79,6 +85,35 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     }
 
 
+    //CHeck Number for PAssword reset
+    fun getMno(mbopo: String): Boolean {
+
+        var selectQuery =
+            "select * from  " + TABLE_NAME.toString() + " where " + MNO_COL.toString() + " = " + "'" + mbopo + "'"
+        val db = this.readableDatabase
+        val cursor = db.rawQuery(selectQuery, null)
+        cursor.moveToFirst()
+        if (cursor.count > 0) {
+            return true
+        }
+        cursor.close()
+        db.close()
+        return false
+    }
+
+
+    //Change Password
+    fun updateData(chpwd: String, mbopo: String): Boolean {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put("pass", chpwd)
+        // db.update("TABLE_NAME", contentValues, "MNO_COL = $mbopo", null)
+        db.update(TABLE_NAME, contentValues, "mobileno = $mbopo", null)
+        return true
+    }
+
+
+    //Create Object For Database
     companion object {
 
         private val DATABASE_NAME = "JEWELBOOK"
