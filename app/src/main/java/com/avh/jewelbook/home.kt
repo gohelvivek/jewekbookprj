@@ -21,11 +21,11 @@ class home : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val ooname = findViewById<TextView>(R.id.oname)
+      /*  val ooname = findViewById<TextView>(R.id.oname)
         ooname.setText(intent.getStringExtra("namo"))
 
         val oocname = findViewById<TextView>(R.id.cname)
-        oocname.setText(intent.getStringExtra("namo"))
+        oocname.setText(intent.getStringExtra("namo"))*/
 
         var ccname = intent.getStringExtra("namo")
         var cnamee = intent.getStringExtra("cnamo")
@@ -38,8 +38,12 @@ class home : AppCompatActivity() {
         var user: HashMap<String, String> = session.getUerDetails()
         var name: String = user.get(sessionmanager.KEY_NAME)!!
         var mail: String = user.get(sessionmanager.KEY_EMAIL)!!
-        lblname.setText("Name : " + ccname)
-        lblmail.setText("Company : " + cnamee)
+
+        lblname.setText("Name : " + name)
+        lblmail.setText("Company : " + mail)
+
+        /*lblname.setText("Name : " + ccname)
+        lblmail.setText("Company : " + cnamee)*/
 
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawlout)
@@ -59,11 +63,10 @@ class home : AppCompatActivity() {
 
 
 
-                R.id.coim -> Toast.makeText(
-                    applicationContext,
-                    "Contacts Import Clicked",
-                    Toast.LENGTH_LONG
-                ).show()
+                R.id.coim -> {
+                    val intent = Intent(this, contactImport::class.java)
+                    startActivity(intent)
+                }
 
                 R.id.item -> {
                     val intent = Intent(this, item::class.java)
