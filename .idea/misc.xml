@@ -3,9 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Hitesh/jewekbookprj/app/src/main/res/layout/activity_additem.xml" value="0.18854166666666666" />
         <entry key="..\:/Hitesh/jewekbookprj/app/src/main/res/layout/activity_forgotpassword.xml" value="0.196875" />
+        <entry key="..\:/Hitesh/jewekbookprj/app/src/main/res/layout/activity_home.xml" value="0.18854166666666666" />
+        <entry key="..\:/Hitesh/jewekbookprj/app/src/main/res/layout/activity_item.xml" value="0.18854166666666666" />
         <entry key="..\:/Hitesh/jewekbookprj/app/src/main/res/layout/activity_main.xml" value="0.16944444444444445" />
+        <entry key="..\:/Hitesh/jewekbookprj/app/src/main/res/layout/activity_otp.xml" value="0.18854166666666666" />
         <entry key="..\:/Hitesh/jewekbookprj/app/src/main/res/layout/activity_register.xml" value="0.196875" />
+        <entry key="..\:/Hitesh/jewekbookprj/app/src/main/res/menu/nev_manu.xml" value="0.18854166666666666" />
         <entry key="..\:/atul/Android28/jewekbookprj/app/src/main/res/layout/activity_forgotpassword.xml" value="0.22" />
         <entry key="..\:/atul/Android28/jewekbookprj/app/src/main/res/layout/activity_home.xml" value="0.196875" />
         <entry key="..\:/atul/Android28/jewekbookprj/app/src/main/res/layout/activity_main.xml" value="0.25" />
