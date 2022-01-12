@@ -1,6 +1,7 @@
 package com.avh.jewelbook
 
 import android.content.Intent
+import android.database.Cursor
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -40,13 +41,17 @@ class MainActivity : AppCompatActivity() {
             val username: String = usermo.getText().toString()
             val pass: String = puw.getText().toString()
 
-
             val db = DBHelper(this, null)
+
+            val data: Cursor? = db.getName(username)
+            if (data != null) {
+                Toast.makeText(applicationContext, data.getString(1), Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(applicationContext, "Data Is Empty", Toast.LENGTH_SHORT).show()
+            }
 
 
             if (db.getUser(username, pass)) {
-
-
                 session.createLoginSession("lnm", "cname")
                 var i: Intent = Intent(applicationContext, home::class.java)
                 startActivity(i)

@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Jewelbook">
         <activity
+            android:name=".Accounts"
+            android:exported="false" />
+        <activity
             android:name=".afternoti"
             android:exported="false" />
         <activity
