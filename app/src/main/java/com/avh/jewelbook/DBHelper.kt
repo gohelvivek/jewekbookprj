@@ -3,8 +3,10 @@ package com.avh.jewelbook
 
 import android.content.ContentValues
 import android.content.Context
+import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import java.util.*
 
 
 class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
@@ -85,11 +87,21 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     }
 
 
+
+    //Get Name
+    fun getName(mb0o: String): Cursor? {
+        var selectQuery = "select name, ccname from " + TABLE_NAME + " where " + MNO_COL + " = " + "'" + mb0o + "'"
+
+        val db = this.writableDatabase
+        val cursor = db.rawQuery(selectQuery, null)
+        return cursor
+    }
+
     //CHeck Number for PAssword reset
     fun getMno(mbopo: String): Boolean {
 
         var selectQuery =
-            "select * from  " + TABLE_NAME.toString() + " where " + MNO_COL.toString() + " = " + "'" + mbopo + "'"
+            "select * from  " + TABLE_NAME + " where " + MNO_COL + " = " + "'" + mbopo + "'"
         val db = this.readableDatabase
         val cursor = db.rawQuery(selectQuery, null)
         cursor.moveToFirst()

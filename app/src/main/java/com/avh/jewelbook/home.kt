@@ -45,8 +45,12 @@ class home : AppCompatActivity() {
             when (it.itemId) {
                 R.id.master -> Toast.makeText(applicationContext, "Home Clicked", Toast.LENGTH_LONG)
                     .show()
-                R.id.acc -> Toast.makeText(applicationContext, "Account Clicked", Toast.LENGTH_LONG)
-                    .show()
+                R.id.acc ->  {
+                val intent= Intent(this,Accounts::class.java)
+                    startActivity(intent)
+                }
+
+
                 R.id.coim -> Toast.makeText(
                     applicationContext,
                     "Contacts Import Clicked",
