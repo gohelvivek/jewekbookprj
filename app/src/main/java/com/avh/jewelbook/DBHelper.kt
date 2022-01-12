@@ -113,6 +113,15 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         return false
     }
 
+    //Get name and Company name
+    fun getdata(mpo: String): Cursor? {
+
+        var selectQuery = "select * from  " + TABLE_NAME.toString() + " where " + MNO_COL.toString() + " = " + "'" + mpo + "'"
+        val db = this.writableDatabase
+        val cursor = db.rawQuery(selectQuery, null)
+        return cursor
+    }
+
 
     //Change Password
     fun updateData(chpwd: String, mbopo: String): Boolean {

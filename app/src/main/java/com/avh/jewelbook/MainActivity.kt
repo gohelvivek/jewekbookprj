@@ -11,12 +11,13 @@ import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
     lateinit var session: sessionmanager
+    val lnm = ""
+    val cnm = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getSupportActionBar()?.hide()
         setContentView(R.layout.activity_main)
-
 
 
         session = sessionmanager(applicationContext)
@@ -37,27 +38,33 @@ class MainActivity : AppCompatActivity() {
         val lgl = findViewById<Button>(R.id.lgn_1)
         lgl.setOnClickListener {
 
-
             val username: String = usermo.getText().toString()
             val pass: String = puw.getText().toString()
 
             val db = DBHelper(this, null)
 
-            val data: Cursor? = db.getName(username)
-            if (data != null) {
-                Toast.makeText(applicationContext, data.getString(1), Toast.LENGTH_SHORT).show()
-            }else{
-                Toast.makeText(applicationContext, "Data Is Empty", Toast.LENGTH_SHORT).show()
-            }
-
-
             if (db.getUser(username, pass)) {
-                session.createLoginSession("lnm", "cname")
+
                 var i: Intent = Intent(applicationContext, home::class.java)
+                session.createLoginSession(lnm, cnm)
+                val data: Cursor? = db.getName(username)
+                if (data != null && data.moveToFirst()) {
+                    do {
+                        val lnm: String = data.getString(0)
+                        val cnm: String = data.getString(1)
+                        i.putExtra("namo",lnm)
+                        i.putExtra("namo",cnm)
+                    } while (data.moveToNext())
+                } else {
+                    Toast.makeText(applicationContext, "Data Is Empty", Toast.LENGTH_SHORT).show()
+                }
+                Toast.makeText(applicationContext, lnm, Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, cnm, Toast.LENGTH_SHORT).show()
+
+
+
                 startActivity(i)
                 finish()
-
-
             } else {
                 Toast.makeText(applicationContext, "Wrong username/password", Toast.LENGTH_SHORT)
                     .show()
@@ -65,12 +72,6 @@ class MainActivity : AppCompatActivity() {
         }
 
         val apilogin = findViewById<Button>(R.id.apilg)
-
-        //api login
-        apilogin.setOnClickListener {
-
-        }
-
 
         val clbtn = findViewById<Button>(R.id.btn)
         clbtn.setOnClickListener() {

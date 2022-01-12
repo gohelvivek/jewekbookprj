@@ -21,6 +21,14 @@ class home : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        val ooname = findViewById<TextView>(R.id.oname)
+        ooname.setText(intent.getStringExtra("namo"))
+
+        val oocname = findViewById<TextView>(R.id.cname)
+        oocname.setText(intent.getStringExtra("namo"))
+
+        var ccname = intent.getStringExtra("namo")
+        var cnamee = intent.getStringExtra("cnamo")
 
         session = sessionmanager(applicationContext)
         var lblname = findViewById<TextView>(R.id.name)
@@ -30,8 +38,8 @@ class home : AppCompatActivity() {
         var user: HashMap<String, String> = session.getUerDetails()
         var name: String = user.get(sessionmanager.KEY_NAME)!!
         var mail: String = user.get(sessionmanager.KEY_EMAIL)!!
-        lblname.setText("Name : " + name)
-        lblmail.setText("Company : " + mail)
+        lblname.setText("Name : " + ccname)
+        lblmail.setText("Company : " + cnamee)
 
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawlout)
@@ -46,9 +54,9 @@ class home : AppCompatActivity() {
                 R.id.master -> Toast.makeText(applicationContext, "Home Clicked", Toast.LENGTH_LONG)
                     .show()
                 R.id.acc ->  {
-                val intent= Intent(this,Accounts::class.java)
-                    startActivity(intent)
+                    Toast.makeText(applicationContext, "Address Clicked", Toast.LENGTH_LONG)
                 }
+
 
 
                 R.id.coim -> Toast.makeText(
