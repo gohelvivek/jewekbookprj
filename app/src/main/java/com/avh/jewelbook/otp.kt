@@ -53,7 +53,7 @@ class otp : AppCompatActivity() {
                         enpwwd.text.clear()
                         encpwdd.text.clear()
 
-                        session.createLoginSession("atul sorani", "a@gmail.com")
+                        session.createLoginSession("atul sorani", "a@gmail.com","9601")
                         var i: Intent = Intent(applicationContext, home::class.java)
                         startActivity(i)
                         finish()

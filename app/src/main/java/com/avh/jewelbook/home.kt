@@ -21,6 +21,7 @@ class home : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+
       /*  val ooname = findViewById<TextView>(R.id.oname)
         ooname.setText(intent.getStringExtra("namo"))
 
@@ -29,18 +30,23 @@ class home : AppCompatActivity() {
 
         var ccname = intent.getStringExtra("namo")
         var cnamee = intent.getStringExtra("cnamo")
+        var num = intent.getStringExtra("numm")
+
 
         session = sessionmanager(applicationContext)
         var lblname = findViewById<TextView>(R.id.name)
         var lblmail = findViewById<TextView>(R.id.mail)
+        var lblnumber = findViewById<TextView>(R.id.numbr)
 
         session.chackLogin()
         var user: HashMap<String, String> = session.getUerDetails()
         var name: String = user.get(sessionmanager.KEY_NAME)!!
         var mail: String = user.get(sessionmanager.KEY_EMAIL)!!
+        var number: String = user.get(sessionmanager.KEY_NUMBER)!!
 
         lblname.setText("Name : " + name)
         lblmail.setText("Company : " + mail)
+        lblnumber.setText("NUMBER : " + number)
 
         /*lblname.setText("Name : " + ccname)
         lblmail.setText("Company : " + cnamee)*/
@@ -104,11 +110,12 @@ class home : AppCompatActivity() {
                     "Support Clicked",
                     Toast.LENGTH_LONG
                 ).show()
-                R.id.profi -> Toast.makeText(
-                    applicationContext,
-                    "Profile Clicked",
-                    Toast.LENGTH_LONG
-                ).show()
+                R.id.profi -> {
+
+                    val intent = Intent(this, Profile::class.java)
+                    intent.putExtra("nummm", number)
+                    startActivity(intent)
+                }
                 R.id.logouttt -> session.logoutUser()
             }
             true

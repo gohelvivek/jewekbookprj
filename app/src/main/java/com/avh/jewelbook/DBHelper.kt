@@ -6,6 +6,7 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import java.sql.Blob
 import java.util.*
 
 
@@ -29,12 +30,22 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
                 ADDRE_COL + " TEXT" + ")")
 
         db.execSQL(query)
+        db.execSQL("create table pdffile(PDF BLOB)")
     }
 
     override fun onUpgrade(db: SQLiteDatabase, p1: Int, p2: Int) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME)
         onCreate(db)
     }
+
+    //Upload Pdf data
+    /*open fun insertData(PDF: Blob): Boolean {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put("pdf",)
+        val res = db.insert("emp", null, contentValues)
+        return if (res == -1L) false else true
+    }*/
 
 
     //Insert Data in database
@@ -122,6 +133,15 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         return cursor
     }
 
+    //All data for profile
+    fun getAlldata(mpo: String): Cursor? {
+
+        var selectQuery = "select * from  " + TABLE_NAME.toString() + " where " + MNO_COL.toString() + " = " + "'" + mpo + "'"
+        val db = this.writableDatabase
+        val cursor = db.rawQuery(selectQuery, null)
+        return cursor
+    }
+
 
     //Change Password
     fun updateData(chpwd: String, mbopo: String): Boolean {
@@ -133,6 +153,16 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         return true
     }
 
+    //Change Password
+    /*fun updateMainData(mbopo: String): Boolean {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put("pass", chpwd)
+        // db.update("TABLE_NAME", contentValues, "MNO_COL = $mbopo", null)
+        db.update(TABLE_NAME, contentValues, "mobileno = $mbopo", null)
+        return true
+    }
+*/
 
     //Create Object For Database
     companion object {
@@ -154,5 +184,6 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     }
 
 }
+
 
 

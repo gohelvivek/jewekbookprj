@@ -45,17 +45,19 @@ class MainActivity : AppCompatActivity() {
 
             if (db.getUser(username, pass)) {
 
-                var i: Intent = Intent(applicationContext, home::class.java)
+                var i = Intent(applicationContext, home::class.java)
                 val data: Cursor? = db.getName(username)
                 if (data != null && data.moveToFirst()) {
                     do {
                         val lnm: String = data.getString(0)
                         val cnm: String = data.getString(1)
 
-                        session.createLoginSession(lnm, cnm)
+                        session.createLoginSession(lnm, cnm, username)
 
                         i.putExtra("namo", lnm)
                         i.putExtra("cnamo", cnm)
+                        i.putExtra("numm", username)
+
                     } while (data.moveToNext())
                 } else {
                     Toast.makeText(applicationContext, "Data Is Empty", Toast.LENGTH_SHORT).show()

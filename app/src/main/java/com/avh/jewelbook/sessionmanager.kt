@@ -23,13 +23,15 @@ public class sessionmanager {
         val IS_LOGIN: String = "IsLogedIn"
         val KEY_NAME: String = "name"
         val KEY_EMAIL: String = "email"
+        val KEY_NUMBER: String = "number"
 
     }
 
-    fun createLoginSession(name: String?, email: String) {
+    fun createLoginSession(name: String?, email: String, username:String) {
         editor.putBoolean(IS_LOGIN, true)
         editor.putString(KEY_NAME, name)
         editor.putString(KEY_EMAIL, email)
+        editor.putString(KEY_NUMBER, username)
         editor.commit()
     }
 
@@ -45,6 +47,7 @@ public class sessionmanager {
     fun getUerDetails(): HashMap<String, String> {
         var user: Map<String, String> = hashMapOf<String, String>()
         (user as HashMap).put(KEY_NAME, pref.getString(KEY_NAME, null).toString())
+        (user as HashMap).put(KEY_NUMBER, pref.getString(KEY_NUMBER, null).toString())
         (user as HashMap).put(KEY_EMAIL, pref.getString(KEY_EMAIL, null).toString())
         return user
 

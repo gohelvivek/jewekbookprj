@@ -55,7 +55,6 @@ class forgotpassword : AppCompatActivity() {
                     intent.putExtra("message_key",message1)
                     startActivity(intent)
 
-
                     val pendingIntent = PendingIntent.getActivity(
                         this,
                         0,
