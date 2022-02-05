@@ -21,10 +21,10 @@ class home : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        val ooname = findViewById<TextView>(R.id.oname)
+        val ooname = findViewById<TextView>(R.id.name)
         ooname.setText(intent.getStringExtra("namo"))
 
-        val oocname = findViewById<TextView>(R.id.cname)
+        val oocname = findViewById<TextView>(R.id.email)
         oocname.setText(intent.getStringExtra("namo"))
 
         var ccname = intent.getStringExtra("namo")
