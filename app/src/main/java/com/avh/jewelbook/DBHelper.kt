@@ -167,8 +167,8 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     //Create Object For Database
     companion object {
 
-        private val DATABASE_NAME = "JEWELBOOK"
-        private val DATABASE_VERSION = 1
+        val DATABASE_NAME = "JEWELBOOK"
+        val DATABASE_VERSION = 1
         val TABLE_NAME = "logggin"
         val ID_COL = "id"
         val NAME_COl = "name"
@@ -179,7 +179,6 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         val EML_COL = "mail"
         val WEB_COL = "websitee"
         val ADDRE_COL = "addrress"
-
 
     }
 
