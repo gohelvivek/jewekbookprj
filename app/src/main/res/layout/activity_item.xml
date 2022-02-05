@@ -29,7 +29,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="250dp"
             android:backgroundTint="@color/reddark"
-            android:text="+" />
+            android:text="+Add Item" />
 
     </LinearLayout>
 </androidx.drawerlayout.widget.DrawerLayout>

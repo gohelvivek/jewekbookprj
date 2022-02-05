@@ -40,7 +40,8 @@ class item : AppCompatActivity() {
                 ).show()
 
                 R.id.item -> {
-                    val intent = Intent(this, item::class.java)
+                    var u: Intent = Intent(applicationContext, item::class.java)
+                    startActivity(u)
                 }
 
 
@@ -86,7 +87,7 @@ class item : AppCompatActivity() {
 
         val addbtn = findViewById<Button>(R.id.aitem)
 
-        addbtn.setOnClickListener(){
+        addbtn.setOnClickListener() {
             val intent = Intent(this, additem::class.java)
             startActivity(intent)
         }

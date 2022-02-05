@@ -25,6 +25,12 @@
             android:name=".register"
             android:exported="false" />
         <activity
+            android:name=".item"
+            android:exported="false" />
+        <activity
+            android:name=".additem"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
