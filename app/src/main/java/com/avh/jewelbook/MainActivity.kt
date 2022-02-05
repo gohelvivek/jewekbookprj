@@ -53,7 +53,7 @@ class MainActivity : AppCompatActivity() {
                         val lnm: String = data.getString(0)
                         val cnm: String = data.getString(1)
                         i.putExtra("namo",lnm)
-                        i.putExtra("cnamo",cnm)
+                        i.putExtra("namo",cnm)
                     } while (data.moveToNext())
                 } else {
                     Toast.makeText(applicationContext, "Data Is Empty", Toast.LENGTH_SHORT).show()

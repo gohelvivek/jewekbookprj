@@ -30,22 +30,6 @@
             android:text="Welcome"
             android:textSize="30dp" />
 
-        <TextView
-            android:id="@+id/oname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:text="Welcome"
-            android:textSize="30dp" />
-
-        <TextView
-            android:id="@+id/cname"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal|center_vertical"
-            android:text="Welcome"
-            android:textSize="30dp" />
-
 
 
     </LinearLayout>

@@ -53,9 +53,10 @@ class home : AppCompatActivity() {
             when (it.itemId) {
                 R.id.master -> Toast.makeText(applicationContext, "Home Clicked", Toast.LENGTH_LONG)
                     .show()
-                R.id.acc -> {
+                R.id.acc ->  {
                     Toast.makeText(applicationContext, "Address Clicked", Toast.LENGTH_LONG)
                 }
+
 
 
                 R.id.coim -> Toast.makeText(
@@ -65,8 +66,8 @@ class home : AppCompatActivity() {
                 ).show()
 
                 R.id.item -> {
-                    var u: Intent = Intent(applicationContext, item::class.java)
-                    startActivity(u)
+                    val intent = Intent(this, item::class.java)
+                    startActivity(intent)
                 }
 
 
