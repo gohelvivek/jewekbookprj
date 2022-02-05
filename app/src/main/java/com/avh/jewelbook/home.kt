@@ -21,11 +21,11 @@ class home : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-       /* val ooname = findViewById<TextView>(R.id.oname)
-        ooname.setText(intent.getStringExtra("namo"))
+        /* val ooname = findViewById<TextView>(R.id.oname)
+         ooname.setText(intent.getStringExtra("namo"))
 
-        val oocname = findViewById<TextView>(R.id.cname)
-        oocname.setText(intent.getStringExtra("namo"))*/
+         val oocname = findViewById<TextView>(R.id.cname)
+         oocname.setText(intent.getStringExtra("namo"))*/
 
         var ccname = intent.getStringExtra("namo")
         var cnamee = intent.getStringExtra("cnamo")
@@ -53,11 +53,9 @@ class home : AppCompatActivity() {
             when (it.itemId) {
                 R.id.master -> Toast.makeText(applicationContext, "Home Clicked", Toast.LENGTH_LONG)
                     .show()
-                R.id.acc ->  {
+                R.id.acc -> {
                     Toast.makeText(applicationContext, "Address Clicked", Toast.LENGTH_LONG)
                 }
-
-
 
                 R.id.coim -> Toast.makeText(
                     applicationContext,
