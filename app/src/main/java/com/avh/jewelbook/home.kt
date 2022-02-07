@@ -16,16 +16,9 @@ class home : AppCompatActivity() {
 
     lateinit var session: sessionmanager
     lateinit var toggle: ActionBarDrawerToggle
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
-      /*  val ooname = findViewById<TextView>(R.id.oname)
-        ooname.setText(intent.getStringExtra("namo"))
-
-        val oocname = findViewById<TextView>(R.id.cname)
-        oocname.setText(intent.getStringExtra("namo"))*/
 
         var ccname = intent.getStringExtra("namo")
         var cnamee = intent.getStringExtra("cnamo")
@@ -33,14 +26,17 @@ class home : AppCompatActivity() {
         session = sessionmanager(applicationContext)
         var lblname = findViewById<TextView>(R.id.name)
         var lblmail = findViewById<TextView>(R.id.mail)
+        var lblmunber = findViewById<TextView>(R.id.numbr)
 
         session.chackLogin()
         var user: HashMap<String, String> = session.getUerDetails()
         var name: String = user.get(sessionmanager.KEY_NAME)!!
         var mail: String = user.get(sessionmanager.KEY_EMAIL)!!
+        var number: String = user.get(sessionmanager.KEY_NUMBER)!!
 
         lblname.setText("Name : " + name)
         lblmail.setText("Company : " + mail)
+        lblmunber.setText("Number : " + number)
 
         /*lblname.setText("Name : " + ccname)
         lblmail.setText("Company : " + cnamee)*/
@@ -96,19 +92,19 @@ class home : AppCompatActivity() {
                 ).show()
                 R.id.setti -> Toast.makeText(
                     applicationContext,
-                    "Settings Clicked",
+                    "Settings Clickedasfdsadfsaf",
                     Toast.LENGTH_LONG
                 ).show()
                 R.id.supp -> Toast.makeText(
                     applicationContext,
-                    "Support Clicked",
+                    "Support Clickedsfsafdasdfasfdasfd",
                     Toast.LENGTH_LONG
                 ).show()
-                R.id.profi -> Toast.makeText(
-                    applicationContext,
-                    "Profile Clicked",
-                    Toast.LENGTH_LONG
-                ).show()
+                R.id.profi -> {
+                    val intent = Intent(this, Profile::class.java)
+                    intent.putExtra("nummm", number)
+                    startActivity(intent)
+                }
                 R.id.logouttt -> session.logoutUser()
             }
             true

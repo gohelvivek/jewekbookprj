@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
                         val lnm: String = data.getString(0)
                         val cnm: String = data.getString(1)
 
-                        session.createLoginSession(lnm, cnm)
+                        session.createLoginSession(lnm, cnm,username)
 
                         i.putExtra("namo", lnm)
                         i.putExtra("cnamo", cnm)
