@@ -46,13 +46,10 @@ class forgotpassword : AppCompatActivity() {
 
                 val db = DBHelper(this, null)
 
-                if (db.getMno(mnbo)){
-
-                   // startActivity(Intent(this@forgotpassword, otp::class.java))
-
+                if (db.getMno(mnbo)) {
                     val intent = Intent(this@forgotpassword, otp::class.java)
                     val message1 = mtxtt.text.toString()
-                    intent.putExtra("message_key",message1)
+                    intent.putExtra("message_key", message1)
                     startActivity(intent)
 
                     val pendingIntent = PendingIntent.getActivity(
@@ -61,8 +58,6 @@ class forgotpassword : AppCompatActivity() {
                         intent,
                         PendingIntent.FLAG_UPDATE_CURRENT
                     )
-
-
                     val contentView = RemoteViews(packageName, R.layout.activity_afternoti)
 
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -101,14 +96,6 @@ class forgotpassword : AppCompatActivity() {
                             .setContentIntent(pendingIntent)
                     }
                     notificationManager.notify(1234, builder.build())
-
-
-                    //val intent = Intent(this@forgotpassword,otp::class.java)
-
-
-                    //startActivity(Intent(this@forgotpassword, otp::class.java))
-
-
                 } else {
 
                     Toast.makeText(
@@ -116,15 +103,9 @@ class forgotpassword : AppCompatActivity() {
                         "Number does not match !",
                         Toast.LENGTH_SHORT
                     ).show()
-
                 }
-
-
             }
-
-
         }
-
 
         val clobttn = findViewById<Button>(R.id.cols)
         clobttn.setOnClickListener {

@@ -1,6 +1,7 @@
 package com.avh.jewelbook
 
 import android.content.Intent
+import android.database.Cursor
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.TextView
@@ -20,6 +21,7 @@ class home : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+
         var ccname = intent.getStringExtra("namo")
         var cnamee = intent.getStringExtra("cnamo")
 
@@ -34,13 +36,19 @@ class home : AppCompatActivity() {
         var mail: String = user.get(sessionmanager.KEY_EMAIL)!!
         var number: String = user.get(sessionmanager.KEY_NUMBER)!!
 
-        lblname.setText("Name : " + name)
-        lblmail.setText("Company : " + mail)
+        val db = DBHelper(this, null)
+        val data: Cursor? = db.getName(number)
+        if (data != null && data.moveToFirst()) {
+            do {
+                val lnnmm: String = data.getString(0)
+                val cnnmm: String = data.getString(1)
+                lblname.setText("Name : " + lnnmm)
+                lblmail.setText("Company : " + cnnmm)
+            } while (data.moveToNext())
+        } else {
+            Toast.makeText(applicationContext, "Data Is Empty", Toast.LENGTH_SHORT).show()
+        }
         lblmunber.setText("Number : " + number)
-
-        /*lblname.setText("Name : " + ccname)
-        lblmail.setText("Company : " + cnamee)*/
-
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawlout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -53,10 +61,9 @@ class home : AppCompatActivity() {
             when (it.itemId) {
                 R.id.master -> Toast.makeText(applicationContext, "Home Clicked", Toast.LENGTH_LONG)
                     .show()
-                R.id.acc ->  {
+                R.id.acc -> {
                     Toast.makeText(applicationContext, "Address Clicked", Toast.LENGTH_LONG)
                 }
-
 
 
                 R.id.coim -> {
@@ -104,6 +111,7 @@ class home : AppCompatActivity() {
                     val intent = Intent(this, Profile::class.java)
                     intent.putExtra("nummm", number)
                     startActivity(intent)
+                    finish()
                 }
                 R.id.logouttt -> session.logoutUser()
             }

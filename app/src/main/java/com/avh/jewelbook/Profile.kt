@@ -1,24 +1,38 @@
 package com.avh.jewelbook
 
+import android.content.Intent
 import android.database.Cursor
+import android.graphics.Color
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
 import androidx.core.view.isVisible
 
 class Profile : AppCompatActivity() {
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_profile)
+
+        val actionBar: ActionBar? = supportActionBar
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true)
+            actionBar.setTitle("Profile")
+            actionBar.setHomeAsUpIndicator(R.drawable.backarrow)
+        }
+
+
         val btnpro = findViewById<Button>(R.id.btn_edtpro)
         val btnchped = findViewById<Button>(R.id.ch_pwd)
-        val edtpwd = findViewById<androidx.cardview.widget.CardView>(R.id.ch_pds)
-        val card_pro = findViewById<androidx.cardview.widget.CardView>(R.id.edt_pro)
+
+        val edtpwd = findViewById<CardView>(R.id.ch_pds)
+        val card_pro = findViewById<CardView>(R.id.edt_pro)
 
 
         val db = DBHelper(this, null)
@@ -73,19 +87,27 @@ class Profile : AppCompatActivity() {
                 Toast.makeText(this, "Textbox is empty", Toast.LENGTH_LONG).show()
             } else {
                 val db = DBHelper(this, null)
-                if(db.updateMainData(num,ennm,encnm,enmobile,enwno,enemail,enweb,enaddre)){
-                    Toast.makeText(applicationContext, "Data Updated", Toast.LENGTH_LONG).show()
-                }else{
-                    Toast.makeText(applicationContext, "Data Not Update", Toast.LENGTH_LONG).show()
+                if (db.updateMainData(num, ennm, encnm, enmobile, enwno, enemail, enweb, enaddre)) {
+                    Toast.makeText(applicationContext, "Profile Updated", Toast.LENGTH_LONG).show()
+                } else {
+                    Toast.makeText(applicationContext, "Profile Not Update", Toast.LENGTH_LONG).show()
                 }
             }
         }
 
         btnpro.setOnClickListener {
+            btnchped.setTextColor(Color.parseColor("#B3B3B3"))
+            btnpro.setTextColor(Color.parseColor("#ffffff"))
+            btnpro.setBackgroundColor(Color.parseColor("#8c3b3b"))
+            btnchped.setBackgroundColor(Color.parseColor("#ffffff"))
             card_pro.isVisible = true
             edtpwd.isVisible = false
         }
         btnchped.setOnClickListener {
+            btnpro.setTextColor(Color.parseColor("#B3B3B3"))
+            btnchped.setTextColor(Color.parseColor("#ffffff"))
+            btnpro.setBackgroundColor(Color.parseColor("#ffffff"))
+            btnchped.setBackgroundColor(Color.parseColor("#8c3b3b"))
             card_pro.isVisible = false
             edtpwd.isVisible = true
         }
@@ -121,5 +143,22 @@ class Profile : AppCompatActivity() {
                 }
             }
         }
+    }
+
+    override fun onBackPressed() {
+
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        val intent = Intent(this@Profile, home::class.java)
+        startActivity(intent)
+        finish()
+        super.onBackPressed()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val intent = Intent(this@Profile, home::class.java)
+        startActivity(intent)
+        finish()
+        return super.onOptionsItemSelected(item)
     }
 }

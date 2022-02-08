@@ -29,10 +29,8 @@ class MainActivity : AppCompatActivity() {
             finish()
         }
 
-
         val usermo = findViewById<EditText>(R.id.nmet)
         val puw = findViewById<EditText>(R.id.passwordEt)
-
 
         //login code here
         val lgl = findViewById<Button>(R.id.lgn_1)
