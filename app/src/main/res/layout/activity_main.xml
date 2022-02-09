@@ -88,6 +88,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginBottom="10sp"
+            android:checked="true"
             android:text="Remeber Me" />
 
         <LinearLayout
