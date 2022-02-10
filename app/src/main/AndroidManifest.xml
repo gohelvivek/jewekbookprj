@@ -13,6 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Jewelbook">
         <activity
+            android:name=".sell_open"
+            android:exported="false" />
+        <activity
+            android:name=".Sell_pur"
+            android:exported="false" />
+        <activity
             android:name=".Profile"
             android:exported="false" />
         <activity
