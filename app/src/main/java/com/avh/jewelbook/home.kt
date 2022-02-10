@@ -110,7 +110,6 @@ class home : AppCompatActivity() {
                     val intent = Intent(this, Profile::class.java)
                     intent.putExtra("nummm", number)
                     startActivity(intent)
-                    finish()
                 }
                 R.id.logouttt -> session.logoutUser()
             }

@@ -145,8 +145,6 @@ class Profile : AppCompatActivity() {
         }
     }
 
-
-
     override fun onBackPressed() {
 
 
