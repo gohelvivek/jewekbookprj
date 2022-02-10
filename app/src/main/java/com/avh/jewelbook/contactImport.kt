@@ -31,39 +31,10 @@ class contactImport : AppCompatActivity() {
 
         var Incnoupload = findViewById<Button>(R.id.Incnoupload)
         Incnoupload.setOnClickListener {
-            if (ActivityCompat.checkSelfPermission(this,
-                    Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED
-            ) {
-                ActivityCompat.requestPermissions(this,
-                    Array(1) { Manifest.permission.READ_CONTACTS },
-                    111)
-            } else {
-                readContact()
-            }
-        }
 
-    }
+            val intent = Intent(this, contactPage::class.java)
+            startActivity(intent)
 
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray,
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if (requestCode == 111 && grantResults[0] == PackageManager.PERMISSION_GRANTED)
-            readContact()
-    }
-
-    private fun readContact() {
-        var rs = contentResolver.query(ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
-            cols,
-            null,
-            null,
-            ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME)
-
-        if (rs!!.moveToNext()) {
-            Toast.makeText(applicationContext, rs.getString(0), Toast.LENGTH_LONG).show()
-            Toast.makeText(applicationContext, rs.getString(1), Toast.LENGTH_LONG).show()
         }
     }
 
