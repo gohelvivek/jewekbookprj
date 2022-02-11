@@ -145,9 +145,20 @@ class Profile : AppCompatActivity() {
         }
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+    override fun onBackPressed() {
 
-        onBackPressed()
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        val intent = Intent(this@Profile, home::class.java)
+        startActivity(intent)
+        finish()
+        super.onBackPressed()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        val intent = Intent(this@Profile, home::class.java)
+        startActivity(intent)
+        finish()
         return super.onOptionsItemSelected(item)
     }
 }

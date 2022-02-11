@@ -1,5 +1,30 @@
 <resources>
     <string name="app_name">Jewelbook</string>
     <string name="open">Open</string>
+
+
+    <string name="additem">Add Item</string>
+
+
+    <string name="sell_pur"> Add Sell/Purchase</string>
+    <string name="sell_purlist">Sell/Purchase List</string>
+    <string name="Select">Select</string>
+    <string name="Acc">Account</string>
+    <string name="date">Date</string>
+    <string name="ly">Line Items Type</string>
+    <string name="items">Items</string>
+    <string name="gw">Gr.Wt</string>
+    <string name="less">Less</string>
+    <string name="netwt">Net Wt.</string>
+    <string name="Tunch">Tunch</string>
+    <string name="Wstg">Wstg</string>
+    <string name="fine">Fine</string>
+    <string name="charges">Charges</string>
+    <string name="image">Image</string>
+    <string name="select">- Select Account -</string>
+    <string name="Rm">Remark</string>
+    <string name="search">Search:</string>
+    <string name="plantext"> </string>
+
     <string name="close">Close</string>
 </resources>

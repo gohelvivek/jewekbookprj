@@ -6,7 +6,6 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import java.util.*
 
 
 class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
@@ -27,7 +26,6 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
                 EML_COL + " TEXT," +
                 WEB_COL + " TEXT," +
                 ADDRE_COL + " TEXT" + ")")
-
         db.execSQL(query)
         db.execSQL("create table pdffile(PDF BLOB)")
     }
@@ -36,16 +34,6 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME)
         onCreate(db)
     }
-
-    //Upload Pdf data
-    /*open fun insertData(PDF: Blob): Boolean {
-        val db = this.writableDatabase
-        val contentValues = ContentValues()
-        contentValues.put("pdf",)
-        val res = db.insert("emp", null, contentValues)
-        return if (res == -1L) false else true
-    }*/
-
 
     //Insert Data in database
     fun addName(

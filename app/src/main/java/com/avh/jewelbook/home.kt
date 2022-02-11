@@ -82,11 +82,10 @@ class home : AppCompatActivity() {
                     "Opening Stock Clicked",
                     Toast.LENGTH_LONG
                 ).show()
-                R.id.sell -> Toast.makeText(
-                    applicationContext,
-                    "Sell/Purchase Clicked",
-                    Toast.LENGTH_LONG
-                ).show()
+                R.id.sell ->  {
+                    val intent = Intent(applicationContext, Sell_pur::class.java)
+                    startActivity(intent)
+                }
                 R.id.caseb -> Toast.makeText(
                     applicationContext,
                     "Casebook Clicked",

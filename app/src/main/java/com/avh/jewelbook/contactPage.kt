@@ -15,6 +15,7 @@ class contactPage : AppCompatActivity() {
 
     var lst: ListView? = null
     var arrayAdapter: ArrayAdapter<String>? = null
+
     var arrayList: ArrayList<String>? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,11 +31,13 @@ class contactPage : AppCompatActivity() {
         val selection = ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME_SOURCE
         val resolver = contentResolver
 
-        val res = resolver.query(uri,
+        val res = resolver.query(
+            uri,
             projection,
             selection,
             null,
-            null)
+            null
+        )
         arrayList = ArrayList()
 
         if (res!!.count == 0) {
@@ -42,21 +45,21 @@ class contactPage : AppCompatActivity() {
         } else {
             while (res!!.moveToNext()) {
                 arrayList!!.add(res!!.getString(0) + "\n" + res!!.getString(1))
-                arrayAdapter = ArrayAdapter(applicationContext, R.layout.lyout,R.id.c_name,
-                    arrayList!!)
+                arrayAdapter = ArrayAdapter(applicationContext, R.layout.lyout, R.id.c_name, arrayList!!)
                 lst!!.setBackgroundColor(Color.rgb(255, 255, 255))
                 lst!!.setAdapter(arrayAdapter)
             }
         }
 
-        lst!!.setOnItemClickListener(OnItemClickListener { adapter, parent, position, idPosition ->
-            try {
-                val value = adapter.getItemAtPosition(position).toString()
-                Toast.makeText(this@contactPage, value, Toast.LENGTH_LONG).show()
-            } catch (e: Exception) {
-                Toast.makeText(this@contactPage, e.message, Toast.LENGTH_LONG).show()
-            }
-        })
+        lst!!.setOnItemClickListener(
+            OnItemClickListener { adapter, parent, position, idPosition ->
+                try {
+                    val value = adapter.getItemAtPosition(position).toString()
+                    Toast.makeText(this@contactPage, value, Toast.LENGTH_LONG).show()
+                } catch (e: Exception) {
+                    Toast.makeText(this@contactPage, e.message, Toast.LENGTH_LONG).show()
+                }
+            })
     }
 
 }
