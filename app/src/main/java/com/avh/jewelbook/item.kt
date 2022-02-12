@@ -20,16 +20,15 @@ class item : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item)
 
-        DBHelper1 = DBHelper1(this, null)
-        viewitem()
-
-
         val actionBar: ActionBar? = supportActionBar
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true)
             actionBar.setTitle("Profile")
             actionBar.setHomeAsUpIndicator(R.drawable.backarrow)
         }
+
+        DBHelper1 = DBHelper1(this, null)
+        viewitem()
 
         val addbtn = findViewById<Button>(R.id.aitem)
 
@@ -54,5 +53,10 @@ class item : AppCompatActivity() {
             LinearLayoutManager(this, RecyclerView.VERTICAL, false) as RecyclerView.LayoutManager
         rv.adapter = adapter
 
+    }
+
+    override fun onResume() {
+        viewitem()
+        super.onResume()
     }
 }

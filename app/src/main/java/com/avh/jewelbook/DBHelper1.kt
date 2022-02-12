@@ -5,7 +5,11 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
 import android.widget.Toast
+import androidx.core.content.contentValuesOf
+import java.lang.Exception
+import kotlin.math.log
 
 class DBHelper1(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     SQLiteOpenHelper(context, DBHelper1.DATABASE_NAME, factory, DBHelper1.DATABASE_VERSION) {
@@ -40,7 +44,7 @@ class DBHelper1(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     }
 
     @SuppressLint("Range")
-    fun getallitem(item: item): ArrayList<Modelsitem> {
+    fun getallitem(item: Context): ArrayList<Modelsitem> {
         val qry = "Select * From itnm"
         val db = this.readableDatabase
         val cursor = db.rawQuery(qry, null)
@@ -49,10 +53,12 @@ class DBHelper1(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         if (cursor.count == 0) {
             Toast.makeText(item, "No Records Found", Toast.LENGTH_SHORT).show()
         } else {
-            while (cursor.moveToNext()) {
+            cursor.moveToFirst()
+            while (!cursor.isAfterLast()) {
                 val item2 = Modelsitem()
                 item2.item = cursor.getString(cursor.getColumnIndex("NAME"))
                 item1.add(item2)
+                cursor.moveToNext()
             }
             Toast.makeText(item, "${cursor.count.toString()}Record Found", Toast.LENGTH_SHORT)
                 .show()
@@ -60,6 +66,20 @@ class DBHelper1(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         cursor.close()
         db.close()
         return item1
+    }
+    fun deleteitem():Boolean{
+       // val qyr="Delete From $"
+        val db=this.writableDatabase
+        var result:Boolean=false
+        try {
+           // val cursor =db.delete()
+            //val cursor=db.execSQL(qyr)
+            result=true
+        }catch (e:Exception){
+            Log.e(ContentValues.TAG,"Error Deleting")
+        }
+        db.close()
+        return result
     }
 
 }
