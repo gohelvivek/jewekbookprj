@@ -27,7 +27,6 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
                 WEB_COL + " TEXT," +
                 ADDRE_COL + " TEXT" + ")")
         db.execSQL(query)
-        db.execSQL("create table pdffile(PDF BLOB)")
     }
 
     override fun onUpgrade(db: SQLiteDatabase, p1: Int, p2: Int) {
