@@ -36,4 +36,5 @@ class DBHelper1(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 //        val COL = "itemname"
 
     }
+
 }
