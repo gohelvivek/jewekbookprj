@@ -1,6 +1,7 @@
 package com.avh.jewelbook
 
 import android.content.Intent
+import android.database.Cursor
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.TextView
@@ -16,16 +17,10 @@ class home : AppCompatActivity() {
 
     lateinit var session: sessionmanager
     lateinit var toggle: ActionBarDrawerToggle
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        /* val ooname = findViewById<TextView>(R.id.oname)
-         ooname.setText(intent.getStringExtra("namo"))
-
-         val oocname = findViewById<TextView>(R.id.cname)
-         oocname.setText(intent.getStringExtra("namo"))*/
 
         var ccname = intent.getStringExtra("namo")
         var cnamee = intent.getStringExtra("cnamo")
@@ -33,14 +28,27 @@ class home : AppCompatActivity() {
         session = sessionmanager(applicationContext)
         var lblname = findViewById<TextView>(R.id.name)
         var lblmail = findViewById<TextView>(R.id.mail)
+        var lblmunber = findViewById<TextView>(R.id.numbr)
 
         session.chackLogin()
         var user: HashMap<String, String> = session.getUerDetails()
         var name: String = user.get(sessionmanager.KEY_NAME)!!
         var mail: String = user.get(sessionmanager.KEY_EMAIL)!!
-        lblname.setText("Name : " + ccname)
-        lblmail.setText("Company : " + cnamee)
+        var number: String = user.get(sessionmanager.KEY_NUMBER)!!
 
+        val db = DBHelper(this, null)
+        val data: Cursor? = db.getName(number)
+        if (data != null && data.moveToFirst()) {
+            do {
+                val lnnmm: String = data.getString(0)
+                val cnnmm: String = data.getString(1)
+                lblname.setText("Name : " + lnnmm)
+                lblmail.setText("Company : " + cnnmm)
+            } while (data.moveToNext())
+        } else {
+            Toast.makeText(applicationContext, "Data Is Empty", Toast.LENGTH_SHORT).show()
+        }
+        lblmunber.setText("Number : " + number)
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawlout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -58,11 +66,11 @@ class home : AppCompatActivity() {
                     startActivity(i)
                     }
 
-                R.id.coim -> Toast.makeText(
-                    applicationContext,
-                    "Contacts Import Clicked",
-                    Toast.LENGTH_LONG
-                ).show()
+
+                R.id.coim -> {
+                    val intent = Intent(this, contactImport::class.java)
+                    startActivity(intent)
+                }
 
                 R.id.item -> {
                     val intent = Intent(this, item::class.java)
@@ -75,11 +83,10 @@ class home : AppCompatActivity() {
                     "Opening Stock Clicked",
                     Toast.LENGTH_LONG
                 ).show()
-                R.id.sell -> Toast.makeText(
-                    applicationContext,
-                    "Sell/Purchase Clicked",
-                    Toast.LENGTH_LONG
-                ).show()
+                R.id.sell ->  {
+                    val intent = Intent(applicationContext, Sell_pur::class.java)
+                    startActivity(intent)
+                }
                 R.id.caseb -> Toast.makeText(
                     applicationContext,
                     "Casebook Clicked",
@@ -92,19 +99,19 @@ class home : AppCompatActivity() {
                 ).show()
                 R.id.setti -> Toast.makeText(
                     applicationContext,
-                    "Settings Clicked",
+                    "Settings Clickedasfdsadfsaf",
                     Toast.LENGTH_LONG
                 ).show()
                 R.id.supp -> Toast.makeText(
                     applicationContext,
-                    "Support Clicked",
+                    "Support Clickedsfsafdasdfasfdasfd",
                     Toast.LENGTH_LONG
                 ).show()
-                R.id.profi -> Toast.makeText(
-                    applicationContext,
-                    "Profile Clicked",
-                    Toast.LENGTH_LONG
-                ).show()
+                R.id.profi -> {
+                    val intent = Intent(this, Profile::class.java)
+                    intent.putExtra("nummm", number)
+                    startActivity(intent)
+                }
                 R.id.logouttt -> session.logoutUser()
             }
             true

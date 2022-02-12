@@ -6,7 +6,6 @@ import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import java.util.*
 
 
 class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
@@ -27,15 +26,14 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
                 EML_COL + " TEXT," +
                 WEB_COL + " TEXT," +
                 ADDRE_COL + " TEXT" + ")")
-
         db.execSQL(query)
+        db.execSQL("create table pdffile(PDF BLOB)")
     }
 
     override fun onUpgrade(db: SQLiteDatabase, p1: Int, p2: Int) {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME)
         onCreate(db)
     }
-
 
     //Insert Data in database
     fun addName(
@@ -46,7 +44,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         wtno: String,
         mail: String,
         websitee: String,
-        addrress: String
+        addrress: String,
     ) {
 
         val values = ContentValues()
@@ -87,10 +85,10 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     }
 
 
-
     //Get Name
     fun getName(mb0o: String): Cursor? {
-        var selectQuery = "select name, ccname from " + TABLE_NAME + " where " + MNO_COL + " = " + "'" + mb0o + "'"
+        var selectQuery =
+            "select name, ccname from " + TABLE_NAME + " where " + MNO_COL + " = " + "'" + mb0o + "'"
 
         val db = this.writableDatabase
         val cursor = db.rawQuery(selectQuery, null)
@@ -116,7 +114,18 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     //Get name and Company name
     fun getdata(mpo: String): Cursor? {
 
-        var selectQuery = "select * from  " + TABLE_NAME.toString() + " where " + MNO_COL.toString() + " = " + "'" + mpo + "'"
+        var selectQuery =
+            "select * from  " + TABLE_NAME.toString() + " where " + MNO_COL.toString() + " = " + "'" + mpo + "'"
+        val db = this.writableDatabase
+        val cursor = db.rawQuery(selectQuery, null)
+        return cursor
+    }
+
+    //All data for profile
+    fun getAlldata(mpo: String): Cursor? {
+
+        var selectQuery =
+            "select * from  " + TABLE_NAME.toString() + " where " + MNO_COL.toString() + " = " + "'" + mpo + "'"
         val db = this.writableDatabase
         val cursor = db.rawQuery(selectQuery, null)
         return cursor
@@ -133,6 +142,30 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         return true
     }
 
+    //Change Password
+    fun updateMainData(
+        mbopo: String,
+        name: String,
+        ccname: String,
+        mobileno: String,
+        wtno: String,
+        mail: String,
+        websitee: String,
+        addrress: String,
+    ): Boolean {
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put("name", name)
+        contentValues.put("ccname", ccname)
+        contentValues.put("mobileno", mobileno)
+        contentValues.put("wtno", wtno)
+        contentValues.put("mail", mail)
+        contentValues.put("websitee", websitee)
+        contentValues.put("addrress", addrress)
+
+        db.update(TABLE_NAME, contentValues, "mobileno = $mbopo", null)
+        return true
+    }
 
     //Create Object For Database
     companion object {
@@ -153,5 +186,6 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     }
 
 }
+
 
 

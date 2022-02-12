@@ -72,8 +72,6 @@ class register : AppCompatActivity() {
                 if (!paass.equals(cpass)) {
                     Toast.makeText(this, " Password Does not match", Toast.LENGTH_LONG).show()
                 } else {
-
-
                     val name = ennm
                     val ccname = encnm
                     val mobileno = enmobile
