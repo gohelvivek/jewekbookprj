@@ -1,9 +1,11 @@
 package com.avh.jewelbook
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.widget.Toast
 
 class DBHelper1(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     SQLiteOpenHelper(context, DBHelper1.DATABASE_NAME, factory, DBHelper1.DATABASE_VERSION) {
@@ -35,6 +37,29 @@ class DBHelper1(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 //        val TABLE_NAME = "items"
 //        val COL = "itemname"
 
+    }
+
+    @SuppressLint("Range")
+    fun getallitem(item: item): ArrayList<Modelsitem> {
+        val qry = "Select * From itnm"
+        val db = this.readableDatabase
+        val cursor = db.rawQuery(qry, null)
+        val item1 = ArrayList<Modelsitem>()
+
+        if (cursor.count == 0) {
+            Toast.makeText(item, "No Records Found", Toast.LENGTH_SHORT).show()
+        } else {
+            while (cursor.moveToNext()) {
+                val item2 = Modelsitem()
+                item2.item = cursor.getString(cursor.getColumnIndex("NAME"))
+                item1.add(item2)
+            }
+            Toast.makeText(item, "${cursor.count.toString()}Record Found", Toast.LENGTH_SHORT)
+                .show()
+        }
+        cursor.close()
+        db.close()
+        return item1
     }
 
 }
