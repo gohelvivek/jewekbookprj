@@ -7,9 +7,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import android.widget.Toast
-import androidx.core.content.contentValuesOf
 import java.lang.Exception
-import kotlin.math.log
 
 class DBHelper1(context: Context, factory: SQLiteDatabase.CursorFactory?) :
     SQLiteOpenHelper(context, DBHelper1.DATABASE_NAME, factory, DBHelper1.DATABASE_VERSION) {
