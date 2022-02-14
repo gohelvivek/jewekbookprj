@@ -40,14 +40,26 @@ class contactPage : AppCompatActivity() {
         )
         arrayList = ArrayList()
 
+
+
         if (res!!.count == 0) {
             Toast.makeText(this, "No Data Found", Toast.LENGTH_SHORT).show()
         } else {
             while (res!!.moveToNext()) {
+                val db = DBHelper2(this,null)
+                
+                val name = res.getString(0)
+                val num = res.getString(1)
+
+                var pwd:String = ""
+                db.addAccount(name,num,pwd)
+
                 arrayList!!.add(res!!.getString(0) + "\n" + res!!.getString(1))
                 arrayAdapter = ArrayAdapter(applicationContext, R.layout.lyout, R.id.c_name, arrayList!!)
                 lst!!.setBackgroundColor(Color.rgb(255, 255, 255))
                 lst!!.setAdapter(arrayAdapter)
+                Toast.makeText(this,"Contact Imported",Toast.LENGTH_LONG).show()
+
             }
         }
 

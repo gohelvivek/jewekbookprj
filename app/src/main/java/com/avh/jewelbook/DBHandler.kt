@@ -1,6 +1,7 @@
 package com.avh.jewelbook
 
 import android.annotation.SuppressLint
+import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
@@ -10,9 +11,8 @@ import android.widget.Toast
 class DBHandler(context: Context,name : String?, factory:SQLiteDatabase.CursorFactory?,version:Int) : SQLiteOpenHelper(context,DATABASE_NAME,factory,DATABASE_VERSION){
 
     companion object{
-        private val DATABASE_NAME = "MyData.db"
+        private val DATABASE_NAME = "MyData"
         private val DATABASE_VERSION = 1
-
         val CUSTOMERS_TABLE_NAME = "Customers"
         val COLUMN_CUSTOMERID = "CustomerId"
         val COLUMN_CUSTOMERNAME = "CustomerName"
@@ -31,8 +31,23 @@ class DBHandler(context: Context,name : String?, factory:SQLiteDatabase.CursorFa
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-
     }
+
+    fun InserAccount(id : String,CusName: String, CusNum: String, pwd:String){
+        val values = ContentValues()
+
+        values.put(COLUMN_CUSTOMERID, id)
+        values.put(COLUMN_CUSTOMERNAME, CusName)
+        values.put(COLUMN_CUSTOMERNUMBER, CusNum)
+        values.put(COLUMN_CUSTOMERPASSWORD, pwd)
+
+        val db = this.writableDatabase
+
+        db.insert(DBHelper.TABLE_NAME, null, values)
+
+        db.close()
+    }
+
     @SuppressLint("Range")
     fun getCustomers(mCtx : Context) : ArrayList<Customer> {
         val qry = "Select * From $CUSTOMERS_TABLE_NAME"
@@ -59,4 +74,6 @@ class DBHandler(context: Context,name : String?, factory:SQLiteDatabase.CursorFa
         db.close()
         return customers
     }
+
+
 }
