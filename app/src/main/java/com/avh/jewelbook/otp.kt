@@ -43,7 +43,6 @@ class otp : AppCompatActivity() {
 
                 } else {
 
-
                     val db = DBHelper(this, null)
 
                     if (db.updateData(cpass, mesaage)) {

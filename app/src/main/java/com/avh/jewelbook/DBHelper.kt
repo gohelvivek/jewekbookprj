@@ -136,7 +136,6 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         val db = this.writableDatabase
         val contentValues = ContentValues()
         contentValues.put("pass", chpwd)
-        // db.update("TABLE_NAME", contentValues, "MNO_COL = $mbopo", null)
         db.update(TABLE_NAME, contentValues, "mobileno = $mbopo", null)
         return true
     }
