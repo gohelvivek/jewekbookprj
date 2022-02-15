@@ -83,10 +83,6 @@
             android:layout_marginTop="10dp"
             android:text="Import Contact"
             android:textAllCaps="false" />
-
-
-
-
     </LinearLayout>
 
 </LinearLayout>

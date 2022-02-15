@@ -27,7 +27,7 @@ class Account : AppCompatActivity() {
 
         dbHandler = DBHandler(this,null,null,1, )
 
-        viewCustomer()
+        //viewCustomer()
 
         val drawerLayout: DrawerLayout = findViewById(R.id.drawlout)
         val navView: NavigationView = findViewById(R.id.nav_view)
@@ -94,13 +94,13 @@ class Account : AppCompatActivity() {
     }
 
     @SuppressLint("WrongConstant")
-    private fun viewCustomer(){
+    /*private fun viewCustomer(){
         val customerslist = dbHandler.getCustomers(this)
         val adapter = CustomerAdapter(this,customerslist)
         val rv:RecyclerView = findViewById(R.id.rv)
         rv.layoutManager = LinearLayoutManager(this,LinearLayout.VERTICAL,false) as RecyclerView.LayoutManager
         rv.adapter = adapter
-    }
+    }*/
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 

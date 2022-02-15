@@ -4,10 +4,12 @@ import android.database.Cursor
 import android.graphics.Color
 import android.os.Bundle
 import android.provider.ContactsContract
+import android.view.MenuItem
 import android.widget.AdapterView.OnItemClickListener
 import android.widget.ArrayAdapter
 import android.widget.ListView
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
@@ -22,6 +24,12 @@ class contactPage : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_contact_page)
+        var actionBar: ActionBar ?= supportActionBar
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true)
+            actionBar.setTitle("Contact Import")
+            actionBar.setHomeAsUpIndicator(R.drawable.backarrow)
+        }
 
         lst = findViewById(R.id.m_lst)
         val uri = ContactsContract.CommonDataKinds.Phone.CONTENT_URI
@@ -47,7 +55,7 @@ class contactPage : AppCompatActivity() {
         } else {
             while (res!!.moveToNext()) {
 
-                val db = DBHelper2(this, null)
+                val db = DBHelper(this, null)
                 val name = res.getString(0)
                 val num = res.getString(1)
                 var pwd: String = ""
@@ -77,6 +85,11 @@ class contactPage : AppCompatActivity() {
                     Toast.makeText(this@contactPage, e.message, Toast.LENGTH_LONG).show()
                 }
             })
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        onBackPressed()
+        return super.onOptionsItemSelected(item)
     }
 
 }
