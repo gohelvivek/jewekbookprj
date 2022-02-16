@@ -1,29 +1,38 @@
 package com.avh.jewelbook
 
-import android.app.AlertDialog
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Adapter
-import android.widget.Button
 import android.widget.TextView
-import androidx.appcompat.view.menu.ActionMenuItemView
 import androidx.recyclerview.widget.RecyclerView
 
-class Adaptersitems(mitem: Context, val Modelitem: ArrayList<Modelsitem>) :
+class Adaptersitems(
+    mitem: Context,
+    val Modelitem: ArrayList<Modelsitem>,
+    private val listener: OnItemClickListener?
+) :
     RecyclerView.Adapter<Adaptersitems.ViewHolder>() {
 
     val mitem = mitem
 
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+//        lateinit var listener :View.OnClickListener
         lateinit var title: TextView
-        lateinit var idelete:Button
 
         init {
             title = itemView.findViewById(R.id.title)
-            idelete=itemView.findViewById(R.id.idelete)
+            itemView.setOnClickListener(this)
         }
+
+        override fun onClick(v: View?) {
+            val position=adapterPosition
+            if(position!=RecyclerView.NO_POSITION)
+            listener?.onItemClick(position)
+        }
+    }
+    interface OnItemClickListener{
+        fun onItemClick(position: Int)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Adaptersitems.ViewHolder {
@@ -37,14 +46,8 @@ class Adaptersitems(mitem: Context, val Modelitem: ArrayList<Modelsitem>) :
         val items: Modelsitem = Modelitem[position]
         holder.title.text = items.item
 
-        holder.idelete.setOnClickListener{
-            val itemname=items.item
+        holder.itemView
 
-            var alertDialog=AlertDialog.Builder(mitem)
-                .setTitle("Warning")
-                .setMessage("Are You Sure to Delete:$item ?")
-                //.setPositiveButton("Yes")
-        }
     }
 
     override fun getItemCount(): Int {

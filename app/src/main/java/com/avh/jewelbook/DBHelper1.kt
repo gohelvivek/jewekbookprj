@@ -14,7 +14,7 @@ class DBHelper1(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
     override fun onCreate(dbb: SQLiteDatabase?) {
 
-        dbb!!.execSQL("create table itnm(NAME TEXT)")
+        dbb!!.execSQL("create table itnm(ID INTEGER PRIMARY KEY,NAME TEXT)")
 
     }
 
@@ -66,7 +66,7 @@ class DBHelper1(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         return item1
     }
     fun deleteitem():Boolean{
-       // val qyr="Delete From $"
+       //  val qyr="Delete From $"
         val db=this.writableDatabase
         var result:Boolean=false
         try {

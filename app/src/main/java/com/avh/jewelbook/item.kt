@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -45,9 +46,11 @@ class item : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+
+
     private fun viewitem() {
         val itemlist = DBHelper1.getallitem(this)
-        val adapter = Adaptersitems(this, itemlist)
+        val adapter = Adaptersitems(this, itemlist,null)
         val rv: RecyclerView = findViewById(R.id.recyclerview)
         rv.layoutManager =
             LinearLayoutManager(this, RecyclerView.VERTICAL, false) as RecyclerView.LayoutManager
