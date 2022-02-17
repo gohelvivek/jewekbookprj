@@ -7,35 +7,20 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class Adaptersitems(
-    mitem: Context,
-    val Modelitem: ArrayList<Modelsitem>,
-    private val listener: OnItemClickListener?
-) :
+class Adaptersitems(mitem: Context, val Modelitem: ArrayList<Modelsitem>) :
     RecyclerView.Adapter<Adaptersitems.ViewHolder>() {
 
     val mitem = mitem
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
-        View.OnClickListener {
-        //        lateinit var listener :View.OnClickListener
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         lateinit var title: TextView
 
         init {
             title = itemView.findViewById(R.id.title)
-            itemView.setOnClickListener(this)
         }
 
-        override fun onClick(v: View?) {
-            val position = adapterPosition
-            if (position != RecyclerView.NO_POSITION)
-                listener?.onItemClick(position)
-        }
     }
 
-    interface OnItemClickListener {
-        fun onItemClick(position: Int)
-    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Adaptersitems.ViewHolder {
 
