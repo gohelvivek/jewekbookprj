@@ -2,10 +2,12 @@ package com.avh.jewelbook
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.ActionBar
 
 
 class additem : AppCompatActivity() {
@@ -13,6 +15,13 @@ class additem : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_additem)
+
+        val actionBar: ActionBar? = supportActionBar
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true)
+            actionBar.setTitle("Profile")
+            actionBar.setHomeAsUpIndicator(R.drawable.backarrow)
+        }
 
         val addl = findViewById<Button>(R.id.addl)
         val etex = findViewById<EditText>(R.id.etex)
@@ -35,5 +44,9 @@ class additem : AppCompatActivity() {
             }
 
         }
+    }
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        onBackPressed()
+        return super.onOptionsItemSelected(item)
     }
 }

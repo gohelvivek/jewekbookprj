@@ -40,9 +40,7 @@ class item : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val intent = Intent(this@item, home::class.java)
-        startActivity(intent)
-        finish()
+        onBackPressed()
         return super.onOptionsItemSelected(item)
     }
 
