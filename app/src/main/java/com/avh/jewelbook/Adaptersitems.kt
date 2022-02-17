@@ -16,8 +16,9 @@ class Adaptersitems(
 
     val mitem = mitem
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
-//        lateinit var listener :View.OnClickListener
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView),
+        View.OnClickListener {
+        //        lateinit var listener :View.OnClickListener
         lateinit var title: TextView
 
         init {
@@ -26,12 +27,13 @@ class Adaptersitems(
         }
 
         override fun onClick(v: View?) {
-            val position=adapterPosition
-            if(position!=RecyclerView.NO_POSITION)
-            listener?.onItemClick(position)
+            val position = adapterPosition
+            if (position != RecyclerView.NO_POSITION)
+                listener?.onItemClick(position)
         }
     }
-    interface OnItemClickListener{
+
+    interface OnItemClickListener {
         fun onItemClick(position: Int)
     }
 
