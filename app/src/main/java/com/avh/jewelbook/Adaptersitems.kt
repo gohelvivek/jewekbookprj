@@ -7,20 +7,17 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 
-class Adaptersitems(mitem: Context, val Modelitem: ArrayList<Modelsitem>) :
-    RecyclerView.Adapter<Adaptersitems.ViewHolder>() {
+class Adaptersitems(mitem: Context, val Modelitem: ArrayList<Modelsitem>) : RecyclerView.Adapter<Adaptersitems.ViewHolder>() {
 
     val mitem = mitem
 
-    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         lateinit var title: TextView
 
         init {
             title = itemView.findViewById(R.id.title)
         }
-
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): Adaptersitems.ViewHolder {
 

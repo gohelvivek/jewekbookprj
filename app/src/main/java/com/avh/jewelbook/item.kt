@@ -50,7 +50,7 @@ class item : AppCompatActivity() {
 
     private fun viewitem() {
         val itemlist = DBHelper1.getallitem(this)
-        val adapter = Adaptersitems(this, itemlist,null)
+        val adapter = Adaptersitems(this, itemlist)
         val rv: RecyclerView = findViewById(R.id.recyclerview)
         rv.layoutManager =
             LinearLayoutManager(this, RecyclerView.VERTICAL, false) as RecyclerView.LayoutManager
