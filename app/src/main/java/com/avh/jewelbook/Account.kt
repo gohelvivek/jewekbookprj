@@ -14,6 +14,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
 class Account() : AppCompatActivity() {
+
+
+
     lateinit var toggle: ActionBarDrawerToggle
     val db = DBHelper(this, null)
 
@@ -57,7 +60,7 @@ class Account() : AppCompatActivity() {
         viewCustomer()
         super.onResume()
     }
-    private fun onListItemClick(position: Int) {
-        Toast.makeText(this, "clicked", Toast.LENGTH_SHORT).show()
-    }
+  private fun onListItemClick(position: Int) {
+      Toast.makeText(this, "clicked", Toast.LENGTH_SHORT).show()
+}
 }
