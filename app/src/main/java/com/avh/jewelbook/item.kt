@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
-import android.widget.Toast
 import androidx.appcompat.app.ActionBar
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -40,11 +39,11 @@ class item : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        onBackPressed()
+        val intent = Intent(this@item, home::class.java)
+        startActivity(intent)
+        finish()
         return super.onOptionsItemSelected(item)
     }
-
-
 
     private fun viewitem() {
         val itemlist = DBHelper1.getallitem(this)

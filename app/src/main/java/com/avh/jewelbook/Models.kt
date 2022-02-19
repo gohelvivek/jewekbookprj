@@ -1,8 +1,8 @@
 package com.avh.jewelbook
 
 class Customer{
-    var customerID : Int = 0
-    var customerName : String = ""
-    var customerNumber : String = ""
-    var customerPassword : String = ""
+    var ID : Int = 0
+    var Name : String = ""
+    var Number : String = ""
+    var Password : String = ""
 }
