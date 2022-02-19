@@ -9,6 +9,7 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.lifecycle.Observer
 import com.google.android.material.navigation.NavigationView
 
 
@@ -20,6 +21,16 @@ class home : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+
+        val networkConnection = chkNwtwork(applicationContext)
+        networkConnection.observe(this, Observer{isConnected ->
+            if (isConnected){
+                Toast.makeText(this, "Connected", Toast.LENGTH_SHORT).show()
+            }else{
+                Toast.makeText(this, "DisConnected", Toast.LENGTH_SHORT).show()
+            }
+
+        })
 
 
         var ccname = intent.getStringExtra("namo")

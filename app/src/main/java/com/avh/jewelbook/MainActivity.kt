@@ -2,6 +2,7 @@ package com.avh.jewelbook
 
 import android.content.Intent
 import android.database.Cursor
+import android.net.NetworkCapabilities
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -11,6 +12,7 @@ import com.android.volley.Request
 import com.android.volley.Response
 import com.android.volley.toolbox.StringRequest
 import com.android.volley.toolbox.Volley
+import java.nio.channels.NetworkChannel
 
 
 class MainActivity : AppCompatActivity {
@@ -20,7 +22,6 @@ class MainActivity : AppCompatActivity {
 
     constructor()
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         getSupportActionBar()?.hide()
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity {
 
         val usermo = findViewById<EditText>(R.id.nmet)
         val puw = findViewById<EditText>(R.id.passwordEt)
+
 
         //login via api
         val lgbtn = findViewById<Button>(R.id.apilg)
