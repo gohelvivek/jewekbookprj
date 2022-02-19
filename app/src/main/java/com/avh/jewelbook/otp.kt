@@ -52,7 +52,7 @@ class otp : AppCompatActivity() {
                         enpwwd.text.clear()
                         encpwdd.text.clear()
 
-                        session.createLoginSession("atul sorani", "a@gmail.com","9601")
+                        session.createLoginSession("atul sorani", "a@gmail.com", "9601")
                         var i: Intent = Intent(applicationContext, home::class.java)
                         startActivity(i)
                         finish()
@@ -61,8 +61,6 @@ class otp : AppCompatActivity() {
                     } else {
                         Toast.makeText(applicationContext, "Error", Toast.LENGTH_SHORT).show()
                     }
-
-
                 }
 
             } else {

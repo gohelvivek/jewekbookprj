@@ -1,6 +1,5 @@
 package com.avh.jewelbook
 
-import android.content.Intent
 import android.database.Cursor
 import android.graphics.Color
 import android.os.Bundle
@@ -90,7 +89,8 @@ class Profile : AppCompatActivity() {
                 if (db.updateMainData(num, ennm, encnm, enmobile, enwno, enemail, enweb, enaddre)) {
                     Toast.makeText(applicationContext, "Profile Updated", Toast.LENGTH_LONG).show()
                 } else {
-                    Toast.makeText(applicationContext, "Profile Not Update", Toast.LENGTH_LONG).show()
+                    Toast.makeText(applicationContext, "Profile Not Update", Toast.LENGTH_LONG)
+                        .show()
                 }
             }
         }
@@ -145,20 +145,9 @@ class Profile : AppCompatActivity() {
         }
     }
 
-    override fun onBackPressed() {
-
-
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        val intent = Intent(this@Profile, home::class.java)
-        startActivity(intent)
-        finish()
-        super.onBackPressed()
-    }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val intent = Intent(this@Profile, home::class.java)
-        startActivity(intent)
-        finish()
+        onBackPressed()
         return super.onOptionsItemSelected(item)
     }
 }

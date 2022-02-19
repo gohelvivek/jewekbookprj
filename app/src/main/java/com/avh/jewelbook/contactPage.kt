@@ -13,7 +13,6 @@ import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import java.util.*
 
-
 class contactPage : AppCompatActivity() {
 
     var lst: ListView? = null
@@ -75,16 +74,6 @@ class contactPage : AppCompatActivity() {
 
             }
         }
-
-        lst!!.setOnItemClickListener(
-            OnItemClickListener { adapter, parent, position, idPosition ->
-                try {
-                    val value = adapter.getItemAtPosition(position).toString()
-                    Toast.makeText(this@contactPage, value, Toast.LENGTH_LONG).show()
-                } catch (e: Exception) {
-                    Toast.makeText(this@contactPage, e.message, Toast.LENGTH_LONG).show()
-                }
-            })
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
