@@ -33,7 +33,7 @@ class chkNwtwork(private var context:Context): LiveData<Boolean>() {
     override fun onInactive() {
         super.onInactive()
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP){
-            connectivityManager.unregisterNetworkCallback(connectivityManagerCallback())
+//            connectivityManager.unregisterNetworkCallback(connectivityManagerCallback())
         }else{
             context.unregisterReceiver(networkReceiver)
         }

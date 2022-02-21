@@ -15,23 +15,12 @@ import com.google.android.material.navigation.NavigationView
 
 class home : AppCompatActivity() {
 
-
     lateinit var session: sessionmanager
     lateinit var toggle: ActionBarDrawerToggle
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
-        val networkConnection = chkNwtwork(applicationContext)
-        networkConnection.observe(this, Observer{isConnected ->
-            if (isConnected){
-                Toast.makeText(this, "Connected", Toast.LENGTH_SHORT).show()
-            }else{
-                Toast.makeText(this, "DisConnected", Toast.LENGTH_SHORT).show()
-            }
-
-        })
-
 
         var ccname = intent.getStringExtra("namo")
         var cnamee = intent.getStringExtra("cnamo")
@@ -75,7 +64,7 @@ class home : AppCompatActivity() {
                 R.id.acc -> {
                     var i: Intent = Intent(applicationContext, Account::class.java)
                     startActivity(i)
-                    }
+                }
 
 
                 R.id.coim -> {
@@ -94,7 +83,7 @@ class home : AppCompatActivity() {
                     "Opening Stock Clicked",
                     Toast.LENGTH_LONG
                 ).show()
-                R.id.sell ->  {
+                R.id.sell -> {
                     val intent = Intent(applicationContext, Sell_pur::class.java)
                     startActivity(intent)
                 }
@@ -138,4 +127,15 @@ class home : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
+    fun chknet() {
+        val networkConnection = chkNwtwork(applicationContext)
+        networkConnection.observe(this, Observer { isConnected ->
+            if (isConnected) {
+                Toast.makeText(this, "Connected", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(this, "DisConnected", Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
 }
