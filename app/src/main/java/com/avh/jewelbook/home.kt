@@ -22,6 +22,8 @@ class home : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        chknet()
+
         var ccname = intent.getStringExtra("namo")
         var cnamee = intent.getStringExtra("cnamo")
 

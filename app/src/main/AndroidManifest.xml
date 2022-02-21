@@ -4,6 +4,8 @@
 
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
     <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
@@ -20,6 +22,11 @@
         <activity
             android:name=".Sell_pur"
             android:exported="false" />
+
+        <activity
+            android:name=".HomeApi"
+            android:exported="false" />
+
         <activity
             android:name=".Profile"
             android:exported="false" />
@@ -29,6 +36,10 @@
         <activity
             android:name=".Account"
             android:exported="false" />
+        <activity
+            android:name=".AddCustomerActivity"
+            android:exported="false" />
+
         <activity
             android:name=".afternoti"
             android:exported="false" />
