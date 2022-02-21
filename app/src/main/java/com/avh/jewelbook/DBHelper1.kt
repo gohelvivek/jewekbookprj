@@ -36,7 +36,7 @@ class DBHelper1(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
         val DATABASE_NAME = "item"
         val DATABASE_VERSION = 1
-//        val TABLE_NAME = "items"
+   //        val TABLE_NAME = "items"
 //        val COL = "itemname"
 
     }
@@ -50,6 +50,8 @@ class DBHelper1(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
         if (cursor.count == 0) {
             Toast.makeText(item, "No Records Found", Toast.LENGTH_SHORT).show()
+
+            cursor.moveToFirst()
         } else {
             cursor.moveToFirst()
             while (!cursor.isAfterLast()) {
@@ -57,6 +59,7 @@ class DBHelper1(context: Context, factory: SQLiteDatabase.CursorFactory?) :
                 item2.item = cursor.getString(cursor.getColumnIndex("NAME"))
                 item1.add(item2)
                 cursor.moveToNext()
+
             }
             Toast.makeText(item, "${cursor.count.toString()}Record Found", Toast.LENGTH_SHORT)
                 .show()

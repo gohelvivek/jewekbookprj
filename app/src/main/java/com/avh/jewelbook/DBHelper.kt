@@ -1,11 +1,14 @@
 package com.avh.jewelbook
 
 
+import android.annotation.SuppressLint
 import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
+import android.util.Log
+import android.widget.Toast
 
 
 class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
@@ -197,7 +200,32 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         val cursor = db.rawQuery(selectQuery, null)
         return cursor
     }
+    @SuppressLint("Range")
+    fun getCustomers(mCtx : Context) : ArrayList<Customer> {
+        val qry = "Select * From Account "
+        val db = this.readableDatabase
+        val cursor = db.rawQuery(qry, null)
+        val customers = ArrayList<Customer>()
 
+        if (cursor.count == 0)
+            Toast.makeText(mCtx, "No Records Found", Toast.LENGTH_SHORT).show() else {
+            while (cursor.moveToNext()) {
+                val customer = Customer()
+                customer.ID = cursor.getInt(cursor.getColumnIndex("ID"))
+                customer.Name = cursor.getString(cursor.getColumnIndex("NAME"))
+                customer.Number =
+                    cursor.getString(cursor.getColumnIndex("NUMBER"))
+                customer.Password =
+                    cursor.getString(cursor.getColumnIndex("PASSWORD"))
+                customers.add(customer)
+            }
+            Toast.makeText(mCtx, "${cursor.count.toString()} Records Found", Toast.LENGTH_SHORT)
+                .show()
+        }
+        cursor.close()
+        db.close()
+        return customers
+    }
 
     //Create Object For Database
     companion object {
@@ -216,6 +244,7 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         val ADDRE_COL = "addrress"
 
     }
+
 
 }
 
