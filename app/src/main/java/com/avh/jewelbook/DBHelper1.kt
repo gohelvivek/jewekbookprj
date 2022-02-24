@@ -5,7 +5,6 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.os.Build.ID
 import android.util.Log
 import android.widget.Toast
 import java.lang.Exception
@@ -37,7 +36,7 @@ class DBHelper1(context: Context, factory: SQLiteDatabase.CursorFactory?) :
 
         val DATABASE_NAME = "item"
         val DATABASE_VERSION = 1
-        //        val TABLE_NAME = "items"
+   //        val TABLE_NAME = "items"
 //        val COL = "itemname"
 
     }
@@ -69,27 +68,19 @@ class DBHelper1(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         db.close()
         return item1
     }
-    fun deleteitem(items: String?):Boolean{
-        val db = this.writableDatabase
-        val qry=db.delete("itnm","Name='$items'",null)
-
+    fun deleteitem(item: String):Boolean{
+       // val qyr="Delete From $"
+        val db=this.writableDatabase
         var result:Boolean=false
         try {
-            val cursor = db.execSQL(qry.toString())
-            result = true
+           // val cursor =db.delete()
+            //val cursor=db.execSQL(qyr)
+            result=true
         }catch (e:Exception){
             Log.e(ContentValues.TAG,"Error Deleting")
         }
         db.close()
         return result
     }
- /*   fun deleteitem(NAME:String): Int {
-        val db=this.writableDatabase
-//        val contentValues=ContentValues()
-//        contentValues.put("NAME",NAME)
-        val success=db.delete("itnm","NAME=$NAME",null)
-        db.close()
-        return success
 
-    }*/
 }

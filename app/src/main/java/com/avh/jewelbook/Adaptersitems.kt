@@ -1,7 +1,6 @@
 package com.avh.jewelbook
 
 import android.app.AlertDialog
-import android.content.ComponentCallbacks
 import android.content.Context
 import android.content.DialogInterface
 import android.view.LayoutInflater
