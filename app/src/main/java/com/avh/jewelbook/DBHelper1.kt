@@ -68,14 +68,16 @@ class DBHelper1(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         db.close()
         return item1
     }
+
+
     fun deleteitem(item: String):Boolean{
-       // val qyr="Delete From $"
-        val db=this.writableDatabase
+        val db = this.writableDatabase
+        val qry=db.delete("itnm","NAME='$item'",null)
+
         var result:Boolean=false
         try {
-           // val cursor =db.delete()
-            //val cursor=db.execSQL(qyr)
-            result=true
+            val cursor = db.execSQL(qry.toString())
+            result = true
         }catch (e:Exception){
             Log.e(ContentValues.TAG,"Error Deleting")
         }
