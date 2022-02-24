@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Button
 import androidx.appcompat.app.ActionBar
+import androidx.appcompat.app.AlertDialog
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 
@@ -36,6 +37,7 @@ class item : AppCompatActivity() {
             val intent = Intent(this, additem::class.java)
             startActivity(intent)
         }
+
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
@@ -53,8 +55,13 @@ class item : AppCompatActivity() {
             LinearLayoutManager(this, RecyclerView.VERTICAL, false) as RecyclerView.LayoutManager
         rv.adapter = adapter
 
-    }
+        /*adapter?.onClickDeleteItems {
+            deleteitem(it.item)
 
+        }
+*/
+    }
+    
     override fun onResume() {
         viewitem()
         super.onResume()

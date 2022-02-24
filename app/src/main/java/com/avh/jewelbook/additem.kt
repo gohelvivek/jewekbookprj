@@ -38,8 +38,7 @@ class additem : AppCompatActivity() {
                     Toast.makeText(this, "Something is wrong in Database.", Toast.LENGTH_SHORT)
                         .show();
                 } else {
-                    Toast.makeText(this, "Record Inserted Successfully.", Toast.LENGTH_SHORT)
-                        .show();
+                    Toast.makeText(this, "Record Inserted Successfully.", Toast.LENGTH_SHORT).show();
                 }
             }
 

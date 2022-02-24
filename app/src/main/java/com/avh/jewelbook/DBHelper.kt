@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.util.Log
 import android.widget.Toast
+import java.lang.Exception
 
 
 class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
@@ -182,6 +183,22 @@ class DBHelper(context: Context, factory: SQLiteDatabase.CursorFactory?) :
         val db = this.writableDatabase
         db.insert("Account", null, values)
         db.close()
+    }
+
+    fun delete(name: String):Boolean{
+       // val qry = "Delete from Account where NAME = $name"
+        val db = this.writableDatabase
+        val qry=db.delete("Account","NAME='$name'",null)
+
+        var result:Boolean=false
+        try {
+            val cursor = db.execSQL(qry.toString())
+            result = true
+        }catch (e:Exception){
+            Log.e(ContentValues.TAG,"Error Deleting")
+        }
+        db.close()
+        return result
     }
 
     //Update Data

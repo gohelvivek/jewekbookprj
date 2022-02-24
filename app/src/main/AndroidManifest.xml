@@ -36,9 +36,7 @@
         <activity
             android:name=".Account"
             android:exported="false" />
-        <activity
-            android:name=".AddCustomerActivity"
-            android:exported="false" />
+
 
         <activity
             android:name=".afternoti"
@@ -61,6 +59,11 @@
         <activity
             android:name=".additem"
             android:exported="false" />
+
+        <activity
+            android:name=".AddCustomerActivity"
+            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true" >
